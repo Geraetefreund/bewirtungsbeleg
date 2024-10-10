@@ -25,7 +25,6 @@ $(PDF): $(SRC)
 # Clean up auxiliary files
 clean:
 	rm -f $(AUX_FILES)
-	rm -f $(PDF)
 
 # Clean up and remove the PDF
 cleanall: clean

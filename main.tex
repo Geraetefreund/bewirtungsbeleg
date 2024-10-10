@@ -1,18 +1,21 @@
 % Lualatex template für bewirtungsbeleg
 % 2024-10-10
-\documentclass[11pt,a4paper]{scrartcl}
+\documentclass[12pt,a4paper]{scrartcl}
 \input{./include/setup.tex}
 \begin{document}
 \begin{luacode}
-    Datum = ""
-    Ort = ""
-    Personen = ""
-    Anlass = ""
-    Betrag = ""
-    Trinkgeld = ""
-    Gesamtbetrag = ""
+    Datum = "Donnerstag, 11.\\,November 2024"
+    Ort = "Restaurant Name\\\\Sowiesostraße 123\\\\ \\textbf{12345 Ort}"
+    Personen = "Erste Person\\\\Zweite Person"
+    Anlass = [[
+        Beratungsgespräch Stimmbildung und/oder
+        Gesangsunterricht für Menschen mit Hemmungen 
+        vor Publikum zu sprechen, Vorträge, Meetings, etc.
+    ]]
+    Betrag = "\\euro{62,55}" -- DIN 5008 für Schreibweise
+    Trinkgeld = "\\euro{0,00}"
+    Gesamtbetrag = "\\euro{62,55}"
 \end{luacode}
-
 
 \noindent
 \textbf{\Large{Bewirtungsbeleg}}\\
@@ -21,42 +24,38 @@
 
 \noindent
 \begin{tblr}{
-        cell{-}{1} = {font=\bfseries},
+    cell{-}{1} = {font=\bfseries},
+    colspec={Q[l] Q[l, 11cm]},
+    \width=\linewidth
     }
-Tag der Bewirtung \hspace{1cm}          & Donnerstag, 11.11.\,2024 \bigskip \\
 
+Tag der Bewirtung \hspace{1cm}  & {\getVar{Datum}}\bigskip \\
 
 {Ort der Bewirtung\\
 \footnotesize\textnormal{
     Genauer Name \& \\
-    Adresse}}              & {Restaurant Name\\
-                              Sowiesostraße 25\\
-                              12345 Ort} \bigskip \\
+    Adresse}}              & {\getVar{Ort}} \bigskip \\
 
 
 Bewirtende Person          & Mark Heines \\
-Bewirtete Personen         & {Erste Person} \bigskip \\
+Bewirtete Personen         & {\getVar{Personen}} \bigskip \\
 
 
-Anlass der Bewirtung       & {Beratungsgespräch Stimmbildung und/oder\\
-                              Gesangsunterricht für Menschen mit Hemmungen\\
-                              vor Publikum zu sprechen, Vorträge, Meetings, etc.}\\
+    Anlass der Bewirtung       & {\getVar{Anlass}}\\
 \end{tblr}
 
-
 \vspace{1cm}
-
 \noindent
 \begin{tblr}{
     cell{-}{1} = {font=\bfseries},
     }
 {Höhe der Aufwendungen gemäß \hspace{2cm}\\
  beigefügter Rechnung 
-\textnormal{(inkl.\,MwSt.)}}               & \EUR{62,50} \bigskip \\[10pt]
+    \textnormal{(inkl.\,MwSt.)}}               & {\getVar{Betrag}} \bigskip \\[10pt]
 
-Trinkgeld                                   & \EUR{0,00} \bigskip\\
+    Trinkgeld                                   & {\getVar{Trinkgeld}} \bigskip\\
 
-Gesamtbetrag                                & \EUR{62,50}\\
+    Gesamtbetrag                                & {\getVar{Gesamtbetrag}}\\
 \end{tblr}
 
 \vspace{1cm}
