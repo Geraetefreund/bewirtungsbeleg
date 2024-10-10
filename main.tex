@@ -1,6 +1,9 @@
 % Lualatex template für bewirtungsbeleg
 % 2024-10-10
 \documentclass[12pt,a4paper]{scrartcl}
+%\usepackage{scrlayer-scrpage}
+
+%\cfoot{Hier ist die Fusszeile}
 \input{./include/setup.tex}
 \begin{document}
 \begin{luacode}
@@ -19,22 +22,22 @@
 
 \noindent
 \textbf{\Large{Bewirtungsbeleg}}\\
-\small{(nach § 4 Abs.\,5 Nr.\,2 EStG)} \\[20pt]
+\small{(nach §\,4~Abs.\@~5 Nr.\@~2~EStG)} \\[20pt]
 \normalsize
 
 \noindent
 \begin{tblr}{
     cell{-}{1} = {font=\bfseries},
-    colspec={Q[l] Q[l, 11cm]},
+    colspec={Q[l,5cm] Q[l, 11cm]},
     \width=\linewidth
     }
 
 Tag der Bewirtung \hspace{1cm}  & {\getVar{Datum}}\bigskip \\
 
-{Ort der Bewirtung\\
+{Ort der Bewirtung 
 \footnotesize\textnormal{
-    Genauer Name \& \\
-    Adresse}}              & {\getVar{Ort}} \bigskip \\
+Genauer Name \& \\
+Adresse}}              & {\getVar{Ort}} \bigskip \\
 
 
 Bewirtende Person          & Mark Heines \\
@@ -55,7 +58,7 @@ Bewirtete Personen         & {\getVar{Personen}} \bigskip \\
 
     Trinkgeld                                   & {\getVar{Trinkgeld}} \bigskip\\
 
-    Gesamtbetrag                                & {\getVar{Gesamtbetrag}}\\
+    Gesamtbetrag                                & \textbf{\getVar{Gesamtbetrag}}\\
 \end{tblr}
 
 \vspace{1cm}
