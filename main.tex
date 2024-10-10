@@ -1,0 +1,72 @@
+% Lualatex template für bewirtungsbeleg
+% 2024-10-10
+\documentclass[11pt,a4paper]{scrartcl}
+\input{./include/setup.tex}
+\begin{document}
+\begin{luacode}
+    Datum = ""
+    Ort = ""
+    Personen = ""
+    Anlass = ""
+    Betrag = ""
+    Trinkgeld = ""
+    Gesamtbetrag = ""
+\end{luacode}
+
+
+\noindent
+\textbf{\Large{Bewirtungsbeleg}}\\
+\small{(nach § 4 Abs.\,5 Nr.\,2 EStG)} \\[20pt]
+\normalsize
+
+\noindent
+\begin{tblr}{
+        cell{-}{1} = {font=\bfseries},
+    }
+Tag der Bewirtung \hspace{1cm}          & Donnerstag, 11.11.\,2024 \bigskip \\
+
+
+{Ort der Bewirtung\\
+\footnotesize\textnormal{
+    Genauer Name \& \\
+    Adresse}}              & {Restaurant Name\\
+                              Sowiesostraße 25\\
+                              12345 Ort} \bigskip \\
+
+
+Bewirtende Person          & Mark Heines \\
+Bewirtete Personen         & {Erste Person} \bigskip \\
+
+
+Anlass der Bewirtung       & {Beratungsgespräch Stimmbildung und/oder\\
+                              Gesangsunterricht für Menschen mit Hemmungen\\
+                              vor Publikum zu sprechen, Vorträge, Meetings, etc.}\\
+\end{tblr}
+
+
+\vspace{1cm}
+
+\noindent
+\begin{tblr}{
+    cell{-}{1} = {font=\bfseries},
+    }
+{Höhe der Aufwendungen gemäß \hspace{2cm}\\
+ beigefügter Rechnung 
+\textnormal{(inkl.\,MwSt.)}}               & \EUR{62,50} \bigskip \\[10pt]
+
+Trinkgeld                                   & \EUR{0,00} \bigskip\\
+
+Gesamtbetrag                                & \EUR{62,50}\\
+\end{tblr}
+
+\vspace{1cm}
+
+\noindent
+\begin{tblr}{
+    cell{1}{-} = {font=\bfseries}
+    }
+Ort, Datum \hspace{4cm}     & Unterschrift des Bewirtenden\\
+%    Erkelenz, \today           & \raisebox{-0.5\height}{\includegraphics[scale=1]{./include/markheines.png}}\\
+    Erkelenz, \today           & \includegraphics[scale=1,align=c]{./include/markheines.png}\\
+\end{tblr}
+\end{document}
